@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
 
     # GET method to get all products from database
     def index
-        @products = Products.all
+        @products = Product.all
     end
 
     # GET method to get a product by id
