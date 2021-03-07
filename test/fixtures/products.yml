@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  like: 1
+  description: MyText
+  price: 9.99
+  material: one
+  user: one
+
+two:
+  name: MyString
+  like: 1
+  description: MyText
+  price: 9.99
+  material: two
+  user: two
