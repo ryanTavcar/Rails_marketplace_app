@@ -20,4 +20,5 @@ class ListingsController < ApplicationController
 
     def destroy
     end
+    
 end
