@@ -1,2 +1,3 @@
 class Material < ApplicationRecord
+    
 end
