@@ -19,6 +19,7 @@ class Product < ApplicationRecord
   belongs_to :user
   has_many :products_categories
   has_many :categories, through: :products_categories
+  accepts_nested_attributes_for :products_categories
 
   # VALIDATIONS
   validates :name, presence: true

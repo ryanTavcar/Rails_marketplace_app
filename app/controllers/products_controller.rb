@@ -1,4 +1,8 @@
 class ProductsController < ApplicationController
+    before_action :authenticate_user!, except: [:show, :index]
+    before_action :set_product, only: %i[ show ]
+    before_action :set_user_product, only: [ :update, :edit, :destroy]
+    before_action :set_form_vars, only: [:new, :edit]
 
     # GET method to get all products from database
     def index
@@ -18,12 +22,14 @@ class ProductsController < ApplicationController
     # POST method for processing form data
     def create
         @product = Product.new(product_params)
-        if @product.save
-            flash[:notice] = 'Product added!'
-            redirect_to_root_path
-        else
-            flash[:error] = 'Failed to edit product!'
-            render :new
+        respond_to do |format|
+            if @product.save
+              format.html { redirect_to @product, notice: 'Product added!'}
+              format.json { render :show, status: :created, location: @product }
+            else
+              format.html { render :new, status: :unprocessable_entity }
+              format.json { render json: @product.errors, status: :unprocessable_entity }
+            end
         end
     end
 
@@ -35,25 +41,25 @@ class ProductsController < ApplicationController
     # PUT/PATCH method for updating in database a pruduct based on id
     def update
         @product = Product.find(params[:id])
-        if product.update_attributes(product_params)
-            flash[:notice] = 'Product updated!'
-            redirect_to_root_path
-        else
-            flash[:error] = 'Failed to update product!'
-            render :edit
+        respond_to do |format|
+            if @product.save
+              format.html { redirect_to @product, notice: 'Product updated!'}
+              format.json { render :show, status: :created, location: @product }
+            else
+              format.html { render :new, status: :unprocessable_entity }
+              format.json { render json: @product.errors, status: :unprocessable_entity }
+            end
         end
     end
 
     # DELETE method for deleting a product from the database
     def destroy
         @product = Product.find(params[:id])
-        if @product.delete
-            flash[:notice] = 'Product deleted!'
-            redirect_to_root_path
-        else
-            flash[:error] = 'Failed to delete this product!'
-            render :destroy
-        end
+
+        respond_to do |format|
+            format.html { redirect_to products_url, flash[:notice] = 'Product deleted!'}
+            format.json { head :no_content }
+          end
     end
 
     private
@@ -62,6 +68,24 @@ class ProductsController < ApplicationController
     def product_params
         params.require(:product).permit(:name, :like, :description, :price, :material_id, :user_id)
     end
+
+    def set_user_product
+        @product = current_user.products.find_by_id(params[:id])
+        if @product == nil
+          flash[:alert] = "you don't have permission to do that!"
+          redirect_to(product_path)
+        end
+    end
+
+    def set_product
+        @product = Product.find(params[:id])
+    end
+
+    def set_form_vars
+        @categories = Category.all
+        #@conditions = Product.conditions.keys
+        @materials = Material.all
+      end
     
 end
 
