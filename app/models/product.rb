@@ -21,6 +21,8 @@ class Product < ApplicationRecord
   has_many :categories, through: :products_categories
   accepts_nested_attributes_for :products_categories
 
+  has_one_attached :picture
+
   # VALIDATIONS
   validates :name, presence: true
   validates :description, presence: true

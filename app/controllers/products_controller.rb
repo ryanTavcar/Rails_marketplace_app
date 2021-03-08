@@ -17,6 +17,7 @@ class ProductsController < ApplicationController
     # GET method for the new product form
     def new
         @product = Product.new
+        @material = @product.material_id
     end
 
     # POST method for processing form data

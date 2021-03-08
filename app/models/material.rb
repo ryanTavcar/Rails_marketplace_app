@@ -8,5 +8,5 @@
 #  updated_at :datetime         not null
 #
 class Material < ApplicationRecord
-    
+    has_many :products
 end
