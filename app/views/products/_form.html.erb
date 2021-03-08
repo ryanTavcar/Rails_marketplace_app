@@ -1,0 +1,52 @@
+<%= form_with(model: product) do |form| %>
+  <% if product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(product.errors.count, "error") %> prohibited this listing from being saved:</h2>
+
+      <ul>
+        <% product.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group mb-3">
+    <%= form.label(:name, class:"form-label") %>
+    <%= form.text_field(:name, class:"form-control") %>
+  </div>
+
+  <div class="form-group mb-3">
+    <%= form.label(:price, class:"form-label") %>
+    <%= form.number_field(:price, class:"form-control") %>
+  </div>
+
+  <div class="form-group mb-3">
+    <%= form.label(:material_id, class:"form-label") %>
+    <%= form.select(:material_id, materials.map{|mat| [mat.name, mat.id]}, class:"form-select") %>
+  </div>
+
+  <div class="form-group mb-3">
+    <%= form.label(:description, class:"form-label") %>
+    <%= form.text_area(:description, class:"form-control") %>
+  </div>
+
+  <h5 class="mb-3">Categories</h5>
+  <div class="form-check mb-3">
+    <%= form.collection_check_boxes(:category_id, categories, :id, :name) do |b|%>
+      <%= b.label(class: "form-check-label") %>
+      <%= b.check_box(class: "form-check-line mr-2") %>
+    <% end %>
+  </div>
+
+  <div class="form-group mb-3">
+    <%= form.label(:picture, class:'form-label') %>
+    <%= form.file_field(:picture, accept: 'image/png,image/jpg,image/jpeg', class:'form-control-file') %>
+    <small class="form-text text-muted">PNG, JPG or JPEG only</small>
+  </div>
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
