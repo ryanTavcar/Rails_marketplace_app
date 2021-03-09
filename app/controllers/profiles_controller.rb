@@ -1,24 +1,10 @@
 class ProfilesController < ApplicationController
 
-    def index
-    end
-
     def show
-    end
-
-    def new
-    end
-
-    def create
-    end
-
-    def edit
-    end
-
-    def update
-    end
-
-    def destroy
+        @user = User.find(params[:id])
+        profile = Profile.find(@user.id)
+        @user_products = @user.products
+        @profile = @user.profile
     end
 
 end

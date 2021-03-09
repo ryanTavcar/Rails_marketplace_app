@@ -16,12 +16,12 @@ class ProductsController < ApplicationController
 
     # GET method for the new product form
     def new
-        @product = Product.new
+        @product = current_user.products.build
     end
 
     # POST method for processing form data
     def create
-        @product = current_user.products.new(product_params)
+        @product = current_user.products.build(product_params)
         respond_to do |format|
             if @product.save
               format.html { redirect_to @product, notice: 'Product added!'}
