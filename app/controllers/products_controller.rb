@@ -84,7 +84,7 @@ class ProductsController < ApplicationController
     def set_form_vars
         @categories = Category.all
         @materials = Material.all
-      end
+    end
     
 end
 

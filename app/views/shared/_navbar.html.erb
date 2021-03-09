@@ -7,6 +7,9 @@
             </li>
             <% if user_signed_in? %>
                 <li class="nav-item">
+                    <%= current_user.email%>
+                </li>
+                <li class="nav-item">
                     <%= link_to('Create Product', new_product_path, class: 'nav-link')%>
                 </li>
                 <li class="nav-item">

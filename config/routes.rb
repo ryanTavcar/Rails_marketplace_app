@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
   get 'users/show'
-  devise_for :users
+  devise_for :users, controllers: { registrations: "registrations" }
   resources :users
   resources :profiles
   root to: "listings#index"
   resources :products
+  
   # Product routes
   #get "/product", to: "products#index", as: "products"
   #post "/products", to: "products#create"
