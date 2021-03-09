@@ -12,6 +12,7 @@
 #  updated_at             :datetime         not null
 #  first_name             :string
 #  last_name              :string
+#  username               :string
 #
 class User < ApplicationRecord
   has_one :profile, dependent: :destroy

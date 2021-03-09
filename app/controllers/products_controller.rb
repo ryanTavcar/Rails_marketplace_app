@@ -17,18 +17,17 @@ class ProductsController < ApplicationController
     # GET method for the new product form
     def new
         @product = Product.new
-        @material = @product.material_id
     end
 
     # POST method for processing form data
     def create
-        @product = Product.new(product_params)
+        @product = current_user.products.new(product_params)
         respond_to do |format|
             if @product.save
               format.html { redirect_to @product, notice: 'Product added!'}
               format.json { render :show, status: :created, location: @product }
             else
-              format.html { render :new, status: :unprocessable_entity }
+              format.html { render :new }
               format.json { render json: @product.errors, status: :unprocessable_entity }
             end
         end
@@ -84,7 +83,6 @@ class ProductsController < ApplicationController
 
     def set_form_vars
         @categories = Category.all
-        #@conditions = Product.conditions.keys
         @materials = Material.all
       end
     

@@ -1,3 +1,5 @@
+<% if false %>
+
 <div class="container d-flex flex-column flex-md-row px-2 my-2 my-md-5">
   <div class="content col-12 col-md-7 col-lg-8 p-0 pr-md-3">
     <div class="col-12 p-0 main-preview mb-4">
@@ -8,27 +10,39 @@
       <% end %>
       </div>
     </div>
-    <div class="sidebar col-lg-4 p-0 mx-2 d-md-block">
-      <h1 class="mb-sm-2 mb-md-5"> <%= @product.name %> </h1>
-      <%@product.materials.each do |material| %>
-        <span class="badge badge-pill badge-info"> <%= material.name %> </span>
-      <% end %>
-      <p class="blockquote mt-2"> <%= @product.description %> </p>
 
-      <% if current_user && @product.purchased == false%>
-        <button data-stripe='payment' class="btn btn-primary p-3">Buy: $<%= @product.price %> </button>
-      <% elsif @product.purchased == true %>
-        <button class="btn btn-secondary" disabled>SOLD</button>
+<% end %>    
+
+<div class="container d-flex flex-column flex-md-row px-2 my-2 my-md-5">
+  <div class="content col-12 col-md-7 col-lg-8 p-0 pr-md-3">
+    <div class="col-12 p-0 main-preview mb-4">
+      <% if @product.picture.attached? %>
+        <%= image_tag(@product.picture, class: 'thumbnail card-img top')%>
       <% else %>
-        <%=button_to('Login to buy', new_user_session_path, class:"btn btn-danger") %>
+      <%= image_tag('skull.jpg', alt: 'skull print', class: 'thumbnail card-img top')%>
       <% end %>
-    </div>
+    <div>
+  </div>
+</div>
+      
+<div class="card-body">
+  <h5><%= @product.name %></h5>
+  <% if @product.like == nil %>
+    <p>likes: <span>0</span></p>
+  <% else %>
+    <p> <%= @product.like %> </p>
+  <% end %>
+  <h6 class="card-subtitle my-2 text-muted">Added <%= time_ago_in_words(@product.created_at)%> ago </h6>
+  <p class="card-text text-secondary text-truncate"><%= @product.description%></p>
+  <div class="d-flex justify-content-between">
+    <%= link_to('See More', product_path(@product.id), class: "btn btn-outline-primary")%>
+    <h5>$<%=@product.price%></h5>
   </div>
 </div>
 
 <div class="container">
   <div class="d-flex justify-content-envenly">
-    <%= link_to('Edit', edit_listing_path(@product.id), class: "btn btn-warning mr-3") if current_user && current_user.id == @product.user_id %>
+    <%= link_to('Edit', edit_product_path(@product.id), class: "btn btn-warning mr-3") if current_user && current_user.id == @product.user_id %>
     <%= link_to('Delete', @product, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger mr-3") if current_user && current_user.id == @product.user_id %>
   </div>
 </div>

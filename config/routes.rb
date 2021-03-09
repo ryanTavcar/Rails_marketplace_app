@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
+  get 'users/show'
   devise_for :users
+  resources :users
   resources :profiles
   root to: "listings#index"
   resources :products
