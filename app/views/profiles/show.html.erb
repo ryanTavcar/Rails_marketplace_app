@@ -11,5 +11,9 @@
     <%= link_to product.name, product_path(product)%>
 <% end %>
 
-
-
+<div class="container">
+  <div class="d-flex justify-content-envenly">
+    <%= link_to('Edit', edit_user_path(@user.id), class: "btn btn-warning mr-3") if current_user && current_user.id == @user.id %>
+    <%= link_to('Delete', @user, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger mr-3") if current_user && current_user.id == @user.id %>
+  </div>
+</div>

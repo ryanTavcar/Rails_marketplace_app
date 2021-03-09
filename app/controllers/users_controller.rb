@@ -24,6 +24,32 @@ class UsersController < ApplicationController
         @profile = @user.profile
     end
 
+    def edit
+    end
+
+    def update
+        respond_to do |format|
+            if @user.update(listing_params)
+              format.html {redirect_to @user, notice: "user was successfully updated." }
+              format.json { render :show, status: :ok, location: @user }
+            else
+              format.html { render :edit, status: :unprocessable_entity }
+              format.json { render json: @user.errors, status: :unprocessable_entity }
+            end
+        end
+    end
+
+    def destroy
+        @user = User.find(params[:id])
+        @user.destroy
+        respond_to do |format|
+            format.html { redirect_to root_url, notice: 'User deleted!'}
+            format.json { head :no_content }
+          end
+    end
+
+
+
     private
 
     def user_params

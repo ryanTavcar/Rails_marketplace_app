@@ -57,7 +57,7 @@ class ProductsController < ApplicationController
         @product = Product.find(params[:id])
 
         respond_to do |format|
-            format.html { redirect_to products_url, flash[:notice] = 'Product deleted!'}
+            format.html { redirect_to products_url, notice: 'Product deleted!'}
             format.json { head :no_content }
           end
     end
