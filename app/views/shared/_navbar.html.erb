@@ -1,13 +1,13 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-warning sticky-top">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
     <div class="container-fluid">
         <%= link_to('PRINT IT!', root_path, class: 'navbar-brand')%>
         <ul class="navbar-nav mr-5-lg">
-            <li class="nav-item">
-                <%= link_to('See products', products_path, class: 'nav-link')%>
-            </li>
             <% if user_signed_in? %>
-                <li class="nav-item">
+                <li class="nav-item text-warning">
                     <%= current_user.email%>
+                </li>
+                <li class="nav-item">
+                    <%= link_to('See products', products_path, class: 'nav-link')%>
                 </li>
                 <li class="nav-item">
                     <%= link_to('Create Product', new_product_path, class: 'nav-link')%>

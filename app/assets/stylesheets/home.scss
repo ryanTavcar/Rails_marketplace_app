@@ -3,5 +3,9 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 .jumbotron {
-    background-color: red;
+    background: url('banner.jpg') no-repeat center center; 
+    background-size: cover;
+    :is(h1,p) {
+        color: white;
+    }
 }
