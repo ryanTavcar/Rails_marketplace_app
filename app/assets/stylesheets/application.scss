@@ -10,11 +10,24 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- */
+*/
 
- /* Import bootstrap */
- @import 'bootstrap/scss/bootstrap';
- @import 'home'
+/* Import bootstrap */
+@import 'bootstrap/scss/bootstrap';
+@import 'home';
+@import url('https://fonts.googleapis.com/css2?family=Holtwood+One+SC&display=swap');
 
-    
+/* Css variables */
+:root {
+--font: 'Holtwood One SC', serif;
+}
+
+
+.navbar {
+    margin-bottom: 1em;
+    .navbar-brand {
+        font-family: var(--font);
+    }
+}
+
 

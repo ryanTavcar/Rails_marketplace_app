@@ -11,6 +11,7 @@
 </div>
       
 <div class="card-body">
+  <h6><%=link_to(@product.user.email, profile_path(@product.user.profile.id))  %></h6>
   <h5><%= @product.name %></h5>
   <% if @product.like == nil %>
     <p>likes: <span>0</span></p>
@@ -20,7 +21,7 @@
   <h6 class="card-subtitle my-2 text-muted">Added <%= time_ago_in_words(@product.created_at)%> ago </h6>
   <p class="card-text text-secondary text-truncate"><%= @product.description%></p>
   <div class="d-flex justify-content-between">
-    <%= link_to('See More', product_path(@product.id), class: "btn btn-outline-primary")%>
+    <%= link_to('Buy', product_path, class: "btn btn-outline-primary")%>
     <h5>$<%=@product.price%></h5>
   </div>
 </div>
