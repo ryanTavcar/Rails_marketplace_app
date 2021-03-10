@@ -41,7 +41,7 @@ class ProfilesController < ApplicationController
         @profile = current_user.profile #.find(params[:id])
         if @profile.update(profile_params)
             flash[:success] = "Successfully updated"    # Optional
-            redirect_to user_path
+            redirect_to profile_path(current_user.profile.id)
         else
             flash[:error] = "Error"       # Optional
             render :edit
