@@ -1,16 +1,16 @@
-<%= form_with model: user do |form| %>
-<% if false %>
-  <% if user.errors.any? %>
+<%= form_with model: profile do |form| %>
+
+  <% if profile.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this listing from being saved:</h2>
+      <h2><%= pluralize(profile.errors.count, "error") %> prohibited this listing from being saved:</h2>
       <ul>
-        <% user.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <% profile.errors.each do |error| %>
+          <li><%= profile.full_message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
-<% end %>
+
 
   <div class="form-group mb-3">
     <%= form.label(:first_name, class:"form-label") %>
@@ -22,10 +22,12 @@
     <%= form.text_field(:last_name, class:"form-control") %>
   </div>
 
-  <div class="form-group mb-3">
-    <%= form.label(:username, class:"form-label") %>
-    <%= form.text_field(:username, class:"form-control") %>
-  </div>
+  <%= form.fields_for :user do |user|%>
+    <div class="form-group mb-3">
+      <%= user.label(:username, class:"form-label") %>
+      <%= user.text_field(:username, class:"form-control") %>
+    </div>
+  <% end %>
 
   <div class="form-group mb-3">
     <%= form.label(:picture, class:'form-label') %>

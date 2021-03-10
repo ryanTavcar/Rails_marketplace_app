@@ -7,8 +7,10 @@
 #  biography  :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  first_name :string
+#  last_name  :string
 #
 class Profile < ApplicationRecord
   belongs_to :user
-  
+  accepts_nested_attributes_for :user
 end

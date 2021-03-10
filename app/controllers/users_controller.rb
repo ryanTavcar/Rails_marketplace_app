@@ -18,10 +18,10 @@ class UsersController < ApplicationController
     end
 
     def show
-        @user = User.find(params[:id])
-        profile = Profile.find(@user.id)
-        @user_products = @user.products
-        @profile = @user.profile
+        #@user = User.find(params[:id])
+        #profile = Profile.find(@user.id)
+        #@user_products = @user.products
+        #@profile = @user.profile
     end
 
     def edit
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
 
     def update
         respond_to do |format|
-            if @user.update(listing_params)
+            if @user.update(user_params)
               format.html {redirect_to @user, notice: "user was successfully updated." }
               format.json { render :show, status: :ok, location: @user }
             else

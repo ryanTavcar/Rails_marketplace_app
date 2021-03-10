@@ -1,19 +1,19 @@
 
-<h1> <%= @user.first_name %> <%= @user.last_name %> </h1>
+<h1> <%= @profile.first_name %> <%= @profile.last_name %> </h1>
 
-<P> <%= @user.email %> </p>
+<P> <%= @profile.user.email %> </p>
 
-<p> <%= @user.username %> </p>
+<p> <%= @profile.user.username %> </p>
 
 <P> <%= @profile.biography %> </p>
 
-<% @user_products.each do |product| %>
+<% @profile.user.products.each do |product| %>
     <%= link_to product.name, product_path(product)%>
 <% end %>
 
 <div class="container">
   <div class="d-flex justify-content-envenly">
-    <%= link_to('Edit', edit_user_path(@user.id), class: "btn btn-warning mr-3") if current_user && current_user.id == @user.id %>
-    <%= link_to('Delete', @user, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger mr-3") if current_user && current_user.id == @user.id %>
+    <%= link_to('Edit', edit_profile_path(@profile.user.id), class: "btn btn-warning mr-3") if current_user && current_user.id == @profile.user.id %>
+    <%= link_to('Delete', @profile.user, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger mr-3") if current_user && current_user.id == @profile.user.id %>
   </div>
 </div>
