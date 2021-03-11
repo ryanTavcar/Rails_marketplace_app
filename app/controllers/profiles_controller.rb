@@ -38,22 +38,11 @@ class ProfilesController < ApplicationController
         @profile = current_user.profile #.find(params[:id])
     end
 
-    #def update
-    #    @profile = current_user.profile #.find(params[:id])
-    #    if @profile.update(profile_params)
-    #        flash[:success] = "Successfully updated"    # Optional
-    #        redirect_to profile_path(current_user.profile.id)
-    #    else
-    #        flash[:error] = "Error"       # Optional
-    #        render :edit
-    #    end
-    #end
-
     def update
        @profile = current_user.profile #.find(params[:id])
        if @profile.update(first_name: profile_params["first_name"], last_name: profile_params["last_name"]) && current_user.update(username: profile_params["user_attributes"]["username"])
             flash[:success] = "Successfully updated"    # Optional
-            redirect_to profile_path(current_user.profile.id)
+            redirect_to @profile
         else
             flash[:error] = "Error"       # Optional
             render :edit
