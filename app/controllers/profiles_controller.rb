@@ -18,10 +18,11 @@ class ProfilesController < ApplicationController
     end
     
     def create
-        @profile = current_user.build_profile(profile_params)
-        if @profile.save
+        @profile = current_user.build_profile(first_name: profile_params["first_name"], last_name: profile_params["last_name"])
+        current_user.username = profile_params["user_attributes"]["username"]
+        if @profile.save && current_user.save
           flash[:success] = "Profile saved"
-          redirect_to profiles_path
+          redirect_to @profile
         else
           flash[:error] = "Error"
           render :new
@@ -37,9 +38,20 @@ class ProfilesController < ApplicationController
         @profile = current_user.profile #.find(params[:id])
     end
 
+    #def update
+    #    @profile = current_user.profile #.find(params[:id])
+    #    if @profile.update(profile_params)
+    #        flash[:success] = "Successfully updated"    # Optional
+    #        redirect_to profile_path(current_user.profile.id)
+    #    else
+    #        flash[:error] = "Error"       # Optional
+    #        render :edit
+    #    end
+    #end
+
     def update
-        @profile = current_user.profile #.find(params[:id])
-        if @profile.update(profile_params)
+       @profile = current_user.profile #.find(params[:id])
+       if @profile.update(first_name: profile_params["first_name"], last_name: profile_params["last_name"]) && current_user.update(username: profile_params["user_attributes"]["username"])
             flash[:success] = "Successfully updated"    # Optional
             redirect_to profile_path(current_user.profile.id)
         else
@@ -54,7 +66,7 @@ class ProfilesController < ApplicationController
     private
 
     def profile_params
-        params.require(:profile).permit(:first_name, :last_name, users_attributes: [:id, :username])
+        params.require(:profile).permit(:first_name, :last_name, user_attributes: [:id, :username])
     end
 
 
