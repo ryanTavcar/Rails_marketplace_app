@@ -7,14 +7,14 @@
 
 
 <div clas="container">
-  <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3">
+  <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-4">
     <% @products.each do |product| %>
       <div class="col mb-4">
-        <div class="card border-dark h-100">
+        <div class="card border-dark">
         <% if product.picture.attached? %>
             <%= image_tag(product.picture, class: 'thumbnail card-img top')%>
           <% else %>
-            <%= image_tag('skull.jpg', alt: 'skull print', class: 'thumbnail card-img top')%>
+            <%= image_tag('skull.jpg', alt: 'skull print', class: 'thumbnail card-img top h-100')%>
           <% end %>
           <div class="card-body">
             <h5><%= product.name %></h5>
