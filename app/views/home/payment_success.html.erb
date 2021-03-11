@@ -1,0 +1,5 @@
+<h2>Thank you for purchasing: <%= @product.name %></h2>
+
+<p>Please click the link below to donwload your purchased file and/or view your receipt. </p>
+
+<%= link_to("View Receipt", @purchase.receipt_url, target: :_blank) %>

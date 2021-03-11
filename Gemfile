@@ -61,3 +61,5 @@ gem 'devise'
 gem "bootstrap", ">= 4.3.1"
 # Jquery gem for bootstrap
 gem 'jquery-rails'
+# Add stripe gem
+gem 'stripe'

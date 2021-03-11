@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :profiles
   root to: "home#index"
   resources :products
+  post 'payments/webhook', to: 'payments#webhook'
+  get 'payments/success', to: 'home#payment_success'
   
   # Product routes
   #get "/product", to: "products#index", as: "products"
