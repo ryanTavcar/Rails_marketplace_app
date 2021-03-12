@@ -63,3 +63,5 @@ gem "bootstrap", ">= 4.3.1"
 gem 'jquery-rails'
 # Add stripe gem
 gem 'stripe'
+# Compile images to heroku
+gem 'rails_12factor', group: :production
