@@ -4,6 +4,7 @@
         <ul class="navbar-nav mr-5-lg">
             <% if user_signed_in? %>
                 <li class="nav-item text-warning">
+                    <%# THIS LINE IS IN DIRE NEED OF FIXING!!!!!!! %>
                     <%= link_to(current_user.username,  profiles_path + "/" + current_user.id.to_s, class: 'nav-link')%>
                 </li>
                 <li class="nav-item">

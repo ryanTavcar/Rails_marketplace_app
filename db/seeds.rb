@@ -13,33 +13,43 @@ if Material.count == 0
 end
 
 if User.count == 0 && User.count <= 10
+    user_plus = 0
     email.each do |email|
+        user_plus = user_plus + 1
         User.create!(email: email, username: "@#{user_name.sample}" , password: '123456', password_confirmation: '123456')
+        puts "created user #{user_plus}"
     end
 end
 
 if Product.count == 0 && Product.count <= 10
-    10.times do 
+    user_plus = 0
+    10.times.each do 
+        user_plus = user_plus + 1
         Product.create!(
             name: product_name.sample, 
             like: rand(100), 
             description: 'This product was generated from db/seeds.rb', 
             price: rand(1..50), 
             material_id: rand(1..3),
-            user_id: rand(1..10),
-            purchased: false
+            purchased: false,
+            user_id: rand(10)
         )
+        puts "created profile: #{Product.find_by(user_id: user_plus)}"
     end
 end
 
 if Profile.count == 0 && Profile.count <= 10
-    10.times do
+    user_plus = 0
+    10.times.each do
+        user_plus = user_plus + 1
         Profile.create!(
-            user_id: rand(1..10), 
+            user_id: user_plus, 
             biography: 'This profile was generated from db/seeds.rb',
             first_name: user_name.sample,
             last_name: last_name.sample
         )
+        puts "created profile #{Profile.find_by(user_id: user_plus)}"
+        
     end
 end
 

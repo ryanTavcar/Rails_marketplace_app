@@ -7,6 +7,9 @@ class ProductsController < ApplicationController
     # GET method to get all products from database
     def index
         @products = Product.all
+        # Remove product listing from index page
+        # something like:
+        # @products = Product.find_by(purchased: true)
     end
 
     # GET method to get a product by id

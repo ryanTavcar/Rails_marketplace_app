@@ -18,7 +18,7 @@ class ProfilesController < ApplicationController
     end
     
     def create
-        @profile = current_user.build_profile(first_name: profile_params["first_name"], last_name: profile_params["last_name"])
+        @profile = current_user.create_profile(first_name: profile_params["first_name"], last_name: profile_params["last_name"])
         current_user.username = profile_params["user_attributes"]["username"]
         if @profile.save && current_user.save
           flash[:success] = "Profile saved"
