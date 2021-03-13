@@ -12,32 +12,39 @@
   </div>
 </div>
 
-
+<%# Fix side bar - not displaying on side of page. %>
+<%# Display user identification and product name. %>
 <div class="sidebar col-lg-4 p-0 mx-2 d-md-block">
-      <h6 class="mb-sm-2 mb-md-5"> <%=link_to(@product.user.email, profile_path(@product.user.profile.id))  %></h6>
-      <h3> <%= @product.name %> </h3>
+  <h6 class="mb-sm-2 mb-md-5"> 
+    <%= link_to(@product.user.email, profile_path(@product.user.profile.id)) %>
+  </h6>
+  <h3> <%= @product.name %> </h3>
 
-      <% pre_like = @product.likes.find { |like| like.user_id == current_user.id} %>
-      <% if pre_like %>
-        <%= button_to 'unlike', product_like_path(@product, pre_like), method: :delete %>
-      <% else %>
-        <%= button_to 'like', product_likes_path(@product), method: :post %>
-      <% end %>
+  <%# Render like button if user is sign in, if user is not sign in, display likes count. %>
+  <% if user_signed_in?%>
+    <%= render('shared/likes')%>
+    <p><%= @product.likes.count %> <%= (@product.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+  <% else %>
+    <p><%= @product.likes.count %> <%= (@product.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+  <% end %>
 
-      <p><%= @product.likes.count %> <%= (@product.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+  <%# Display product bulk information. %>
+  <p class="blockquote mt-2"> <%= @product.description %> </p>
+  <h6 class="card-subtitle my-2 text-muted">Added <%= time_ago_in_words(@product.created_at)%> ago </h6>
 
-       <p class="blockquote mt-2"> <%= @product.description %> </p>
-       <h6 class="card-subtitle my-2 text-muted">Added <%= time_ago_in_words(@product.created_at)%> ago </h6>
+  <%# Show buy button if current_user has not purchased this item. %>
+  <% if current_user && @product.purchased == false%>
+    <button data-stripe='payment' class="btn btn-primary p-3">Buy: $<%= @product.price %> </button>
 
-      <% if current_user && @product.purchased == false%>
-        <button data-stripe='payment' class="btn btn-primary p-3">Buy: $<%= @product.price %> </button>
-      <% elsif @product.purchased == true %>
-        <button class="btn btn-secondary" disabled>SOLD</button>
-      <% else %>
-        <%=button_to('Login to buy', new_user_session_path, class:"btn btn-danger") %>
-      <% end %>
-    </div>
-  </div>
+  <%#>
+  <% elsif @product.purchased == true 
+    <button class="btn btn-secondary" disabled>SOLD</button> %>
+    
+  <% else %>
+    <%=button_to('Login to buy', new_user_session_path, class:"btn btn-danger") %>
+  <% end %>
+</div>
+
 
 <div class="container">
   <div class="d-flex justify-content-envenly">

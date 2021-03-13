@@ -6,11 +6,13 @@
     <% @products.each do |product| %>
       <div class="col mb-4">
         <div class="card border-dark">
+
         <% if product.picture.attached? %>
             <%= image_tag(product.picture, class: 'thumbnail card-img top')%>
           <% else %>
             <%= image_tag('skull.jpg', alt: 'skull print', class: 'thumbnail card-img top h-100')%>
           <% end %>
+          
           <div class="card-body">
             <h5><%= product.name %></h5>
             <p><%= product.likes.count %> <%= (product.likes.count) == 1 ? 'Like' : 'Likes'%></p>

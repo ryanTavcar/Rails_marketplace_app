@@ -1,0 +1,6 @@
+<% pre_like = @product.likes.find { |like| like.user_id == current_user.id} %>
+      <% if pre_like %>
+        <%= button_to 'unlike', product_like_path(@product, pre_like), method: :delete %>
+      <% else %>
+        <%= button_to 'like', product_likes_path(@product), method: :post %>
+      <% end %>

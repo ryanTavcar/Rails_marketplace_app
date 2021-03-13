@@ -1,7 +1,8 @@
 class HomeController < ApplicationController
 
+    # Find all products that have not been bought
     def index
-        @products = Product.all
+        @products = Product.where(purchased: false)
     end
 
     def payment_success

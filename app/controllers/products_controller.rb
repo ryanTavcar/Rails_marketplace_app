@@ -4,12 +4,9 @@ class ProductsController < ApplicationController
     before_action :set_user_product, only: [ :update, :edit, :destroy]
     before_action :set_form_vars, only: [:new, :edit]
 
-    # GET method to get all products from database
+    # Find all products that have not been bought
     def index
-        @products = Product.all
-        # Remove product listing from index page
-        # something like:
-        # @products = Product.find_by(purchased: true)
+        @products = Product.find_by(purchased: true)
     end
 
     # GET method to get a product by id
