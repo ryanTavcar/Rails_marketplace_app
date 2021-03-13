@@ -1,3 +1,5 @@
+<%= render('shared/navbar')%>
+
 <div class="container d-flex flex-column flex-md-row px-2 my-2 my-md-5">
   <div class="content col-12 col-md-7 col-lg-8 p-0 pr-md-3">
     <div class="col-12 p-0 main-preview mb-4">
@@ -9,28 +11,6 @@
     <div>
   </div>
 </div>
-
-
-
-
-<% if false%>
-<div class="card-body">
-  <h6><%=link_to(@product.user.email, profile_path(@product.user.profile.id))  %></h6>
-  <h5><%= @product.name %></h5>
-  <% if @product.like == nil %>
-    <p>likes: <span>0</span></p>
-  <% else %>
-    <p>likes: <%= @product.like %> </p>
-  <% end %>
-  <h6 class="card-subtitle my-2 text-muted">Added <%= time_ago_in_words(@product.created_at)%> ago </h6>
-  <p class="card-text text-secondary text-truncate"><%= @product.description%></p>
-  <div class="d-flex justify-content-between">
-    <%= link_to('Buy', product_path, class: "btn btn-outline-primary")%>
-    <h5>$<%=@product.price%></h5>
-  </div>
-</div>
-<% end %>
-
 
 
 <div class="sidebar col-lg-4 p-0 mx-2 d-md-block">

@@ -3,12 +3,6 @@ body{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    .navbar {
-        visibility: hidden;
-        height: 0;
-        margin: 0;
-        padding: 0;
-    }
 
     .sign-up {
         margin-top: 2em;
@@ -20,15 +14,12 @@ body{
         }
     }
 
-    main {
-
+    .main {
         z-index: 2;
         position: absolute;
-        top: 50vh;
-        left: 50vw;
-        margin-right: -50%;
-        transform: translate(-50%, -50%);
-        width: 70%;
+        top: 20vh;
+        left: 60em;
+        width: auto;
         .auth-content {
             height: 666px;
             width: 536px;
@@ -75,11 +66,19 @@ body{
         }
     }
 
-    .head-img {
-        background-color: #FFBA00;
+    .head-img-signup {
+        background: url(signin.svg) no-repeat center;
+        background-size: 660px;
+        background-color: #F1CDD7;
         position: absolute;
-        width: 30em;
+        width: 514px;
         height: 100vh;
-        z-index: 1;
+        z-index: 1; 
+        .banner-text {
+            position: relative;
+            top: 5em;
+            left: 3em;
+        }
     }
+    
 }
