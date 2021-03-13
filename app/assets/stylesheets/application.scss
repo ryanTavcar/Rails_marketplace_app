@@ -30,10 +30,22 @@ body {
 }
 
 .navbar {
-    margin-bottom: 1em;
+    margin-bottom: 0;
     .navbar-brand {
         font-family: var(--font);
     }
 }
 
 
+
+
+
+
+
+
+
+
+
+/* custom devise styling*/
+@import 'sessions';
+@import 'registrations';
