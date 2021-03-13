@@ -4,7 +4,7 @@ class LikesController < ApplicationController
     before_action :already_liked?
 
     def create
-
+        
         if already_liked?
             flash[:notice] = "You can't like more than once"
         else

@@ -38,7 +38,6 @@
       <h3> <%= @product.name %> </h3>
 
       <% pre_like = @product.likes.find { |like| like.user_id == current_user.id} %>
-      
       <% if pre_like %>
         <%= button_to 'unlike', product_like_path(@product, pre_like), method: :delete %>
       <% else %>
