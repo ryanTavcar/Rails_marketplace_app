@@ -12,8 +12,6 @@ Rails.application.routes.draw do
   resources :products do
     resources :likes
   end
-
-
   
   # Product routes
   #get "/product", to: "products#index", as: "products"
