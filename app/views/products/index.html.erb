@@ -11,6 +11,7 @@
           <% end %>
           <div class="card-body">
             <h5><%= product.name %></h5>
+            <p><%= product.likes.count %> <%= (product.likes.count) == 1 ? 'Like' : 'Likes'%></p>
             <h6 class="card-subtitle my-2 text-muted">Added <%= time_ago_in_words(product.created_at)%> ago </h6>
             <p class="card-text text-secondary text-truncate"><%= product.description%></p>
             <div class="d-flex justify-content-between">

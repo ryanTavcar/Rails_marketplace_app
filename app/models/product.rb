@@ -19,6 +19,7 @@ class Product < ApplicationRecord
   belongs_to :user
   has_many :products_categories
   has_many :categories, through: :products_categories
+  has_many :likes, dependent: :destroy
   accepts_nested_attributes_for :products_categories
 
   has_one_attached :picture

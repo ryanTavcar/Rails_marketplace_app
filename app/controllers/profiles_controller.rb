@@ -3,8 +3,6 @@ class ProfilesController < ApplicationController
     before_action :find_profile, only: [:show, :edit, :update, :destroy]
     before_action :set_form_vars, only: [:new, :edit]
 
-    respond_to :html
-
     # ISSUE: Having to create a profile via rails console
     # I want to create a profile upon signup after being
     # redirected to profile form.

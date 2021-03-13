@@ -20,7 +20,7 @@
   <% if @product.like == nil %>
     <p>likes: <span>0</span></p>
   <% else %>
-    <p> <%= @product.like %> </p>
+    <p>likes: <%= @product.like %> </p>
   <% end %>
   <h6 class="card-subtitle my-2 text-muted">Added <%= time_ago_in_words(@product.created_at)%> ago </h6>
   <p class="card-text text-secondary text-truncate"><%= @product.description%></p>
@@ -33,11 +33,21 @@
 
 
 
-
 <div class="sidebar col-lg-4 p-0 mx-2 d-md-block">
       <h6 class="mb-sm-2 mb-md-5"> <%=link_to(@product.user.email, profile_path(@product.user.profile.id))  %></h6>
       <h3> <%= @product.name %> </h3>
+
+      <% pre_like = @product.likes.find { |like| like.user_id == current_user.id} %>
+      <% if pre_like %>
+        <%= button_to 'unlike', product_like_path(@product, pre_like), method: :delete %>
+      <% else %>
+        <%= button_to 'like', product_likes_path(@product), method: :post %>
+      <% end %>
+
+      <p><%= @product.likes.count %> <%= (@product.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+
        <p class="blockquote mt-2"> <%= @product.description %> </p>
+       <h6 class="card-subtitle my-2 text-muted">Added <%= time_ago_in_words(@product.created_at)%> ago </h6>
 
       <% if current_user && @product.purchased == false%>
         <button data-stripe='payment' class="btn btn-primary p-3">Buy: $<%= @product.price %> </button>

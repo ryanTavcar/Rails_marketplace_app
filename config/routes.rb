@@ -7,6 +7,13 @@ Rails.application.routes.draw do
   resources :products
   post 'payments/webhook', to: 'payments#webhook'
   get 'payments/success', to: 'home#payment_success'
+
+
+  resources :products do
+    resources :likes
+  end
+
+
   
   # Product routes
   #get "/product", to: "products#index", as: "products"
