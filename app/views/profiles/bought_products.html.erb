@@ -1,0 +1,30 @@
+<%= render('shared/navbar')%>
+
+<h1 class="hero-title text-center"> Products </h1>
+<div clas="container">
+  <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-5">
+    <% @bought_product.each do |bought| %>
+      <div class="col mb-4">
+        <div class="card border-dark">
+
+        <% if bought.picture.attached? %>
+            <%= image_tag(bought.picture, class: 'thumbnail card-img top')%>
+          <% else %>
+            <%= image_tag('skull.jpg', alt: 'skull print', class: 'thumbnail card-img top h-100')%>
+          <% end %>
+
+          <div class="card-body">
+            <h5><%= bought.name %></h5>
+            <p><%= bought.likes.count %> <%= (bought.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+            <h6 class="card-subtitle my-2 text-muted">Added <%= time_ago_in_words(bought.created_at)%> ago </h6>
+            <p class="card-text text-secondary text-truncate"><%= bought.description%></p>
+            <div class="d-flex justify-content-between">
+              <%= link_to('See More', product_path(bought.id), class: "btn btn-outline-primary")%>
+              <h5>$<%= bought.price%></h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

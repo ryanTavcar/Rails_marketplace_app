@@ -56,6 +56,10 @@ class ProfilesController < ApplicationController
         @liked_products = @user.likes
     end
 
+    def bought_products
+        @bought_product = Product.where(purchased: true)
+    end
+
     def settings
         @profile = Profile.find(params[:id])
     end
