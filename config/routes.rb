@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :products
   post 'payments/webhook', to: 'payments#webhook'
   get 'payments/success', to: 'home#payment_success'
+  get '/profiles/settings/:id', to: 'profiles#settings', as: :profile_settings
 
 
   resources :products do

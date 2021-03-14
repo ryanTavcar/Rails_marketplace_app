@@ -14,7 +14,7 @@
 
 <%# Fix side bar - not displaying on side of page. %>
 <%# Display user identification and product name. %>
-<div class="sidebar col-lg-4 p-0 mx-2 d-md-block">
+<div class="col-md-4 blog-sidebar col-lg-4 p-0 mx-2 d-md-block">
   <h6 class="mb-sm-2 mb-md-5"> 
     <%= link_to(@product.user.email, profile_path(@product.user.profile.id)) %>
   </h6>

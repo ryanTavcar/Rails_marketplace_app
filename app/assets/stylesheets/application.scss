@@ -18,6 +18,10 @@
 @import 'profiles';
 @import url('https://fonts.googleapis.com/css2?family=Holtwood+One+SC&display=swap');
 
+/* Import font awesome*/
+@import 'font_awesome5_webfont';
+$fa-font-path: '@fortawesome/fontawesome-free/webfonts';
+
 /* Css variables */
 :root {
     --font: 'Holtwood One SC', serif;

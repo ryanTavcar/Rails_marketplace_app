@@ -66,4 +66,6 @@ gem 'jquery-rails'
 gem 'stripe'
 # Compile images to heroku
 gem 'rails_12factor', group: :production
+# Add font awesome
+gem 'font_awesome5_rails'
 

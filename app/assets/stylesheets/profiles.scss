@@ -3,7 +3,26 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 // Change Profile picture height and width
-.thumbnail {
-    height: 25em;
-    height: 35em;
+
+
+.main-container {
+    position: absolute;
+    top: 20vh;
+    left: 20em;
+    max-width: 50rem;
+    margin: 0;
+    .thumbnail {
+        height: 30%;
+        height: 30%;
+    }
+}
+
+.profile-info {
+    position: absolute;
+    top: 20vh;
+    left: 60em;
+    height: 35.75rem;
+    .footer {
+        height: 6em;
+    }
 }

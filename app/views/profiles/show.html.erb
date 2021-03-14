@@ -1,36 +1,35 @@
 <%= render('shared/navbar')%>
 
-<div class="container d-flex flex-column flex-md-row px-2 my-2 my-md-5 w-50">
+
+<main class="main-container">
+  <div class="card border-dark">
+    <% if @profile.picture.attached? %>
+      <%= image_tag(@profile.picture, class: 'thumbnail card-img top top')%>
+    <% else %>
+      <%= image_tag('profile_pic.png', alt: 'skull print', class: 'thumbnail card-img top ')%>
+    <% end %>
+  <div>
+
+</main>
+
+
+<sidebar class="profile-info">
   <h1> <%= @profile.first_name %> <%= @profile.last_name %> </h1>
-</div>
+  <div class="sidebar col-lg-4 p-0 mx-2 d-md-block">
+    <P> <%= @profile.user.email %> </p>
 
-<div class="container d-flex flex-column flex-md-row px-2 my-2 my-md-5 w-50">
-  <div class="content col-12 col-md-7 col-lg-8 p-0 pr-md-3">
-    <div class="col-12 p-0 main-preview mb-4">
-      <div class="card border-dark">
-        <% if @profile.picture.attached? %>
-          <%= image_tag(@profile.picture, class: 'thumbnail card-img top top')%>
-        <% else %>
-          <%= image_tag('profile_pic.png', alt: 'skull print', class: 'thumbnail card-img top ')%>
-        <% end %>
-      <div>
-    </div>
+    <p> <%= @profile.user.username %> </p>
+
+    <P> <%= @profile.biography %> </p>
+
+    <% @profile.user.products.each do |product| %>
+        <%= link_to product.name, product_path(product)%>
+    <% end %>
   </div>
-</div>
 
-<P> <%= @profile.user.email %> </p>
-
-<p> <%= @profile.user.username %> </p>
-
-<P> <%= @profile.biography %> </p>
-
-<% @profile.user.products.each do |product| %>
-    <%= link_to product.name, product_path(product)%>
-<% end %>
-
-<div class="container">
-  <div class="d-flex justify-content-envenly">
-    <%= link_to('Edit', edit_profile_path(@profile.user.id), class: "btn btn-warning mr-3") if current_user && current_user.id == @profile.user.id %>
-    <%= link_to('Delete', @profile.user, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger mr-3") if current_user && current_user.id == @profile.user.id %>
-  </div>
-</div>
+  <footer class="footer">
+    <%= link_to profile_settings_path, class: "btn btn-default" do %>
+      <i class="fas fa-cog fa-3x"></i>
+    <% end %>
+  </footer>
+</sidebar>

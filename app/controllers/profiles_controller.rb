@@ -50,6 +50,10 @@ class ProfilesController < ApplicationController
     def destroy
     end
 
+    def settings
+        @profile = Profile.find(params[:id])
+    end
+
     private
 
     def profile_params
