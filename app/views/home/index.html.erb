@@ -12,7 +12,7 @@
   <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-5">
     
     <% @products.each do |product| %>
-      <div class="col mb-1">
+      <div class="col mb-3">
         <div class="card border-light">
         <% if product.picture.attached? %>
             <%= image_tag(product.picture, class: 'thumbnail card-img top')%>
@@ -22,6 +22,7 @@
           
           <div class="card-body">
             <h5><%= product.name %></h5>
+            <p><%= product.likes.count %> <%= (product.likes.count) == 1 ? 'Like' : 'Likes'%></p>
             <h6 class="card-subtitle my-2 text-muted">Added <%= time_ago_in_words(product.created_at)%> ago </h6>
             <p class="card-text text-secondary text-truncate"><%= product.description%></p>
             <div class="d-flex justify-content-between">

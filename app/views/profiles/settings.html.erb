@@ -1,3 +1,5 @@
+<%= render('shared/navbar')%>
+<br>
 <div class="container">
   <div class="d-flex justify-content-envenly">
     <%= link_to('Edit', edit_profile_path(@profile.user.id), class: "btn btn-warning mr-3") if current_user && current_user.id == @profile.user.id %>
