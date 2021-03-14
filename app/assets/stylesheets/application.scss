@@ -16,6 +16,7 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'home';
 @import 'profiles';
+@import 'products';
 @import url('https://fonts.googleapis.com/css2?family=Holtwood+One+SC&display=swap');
 
 /* Import font awesome*/
@@ -30,15 +31,48 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
 // Stop horizontal scroll
 body {
     overflow-x: hidden;
-    background-color: #F2F2F2;
-}
+    background-color: #f8f9fa;
 
-.navbar {
-    margin-bottom: 0;
-    .navbar-brand {
-        font-family: var(--font);
+    .navbar {
+        margin-bottom: 0;
+        padding: o;
+        box-shadow: 0 0 8px .5px rgb(106, 113, 121);
+        .logo-container {
+            width: 11.25em;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            align-items: center;
+            .logo {
+                height: 4em;
+                width: 4em;
+            }
+            .navbar-brand {
+                width: 8em;
+                font-family: var(--font);
+                transform: translateX(1em);
+            }
+        }
+    }
+
+    .banner-text {
+        position: relative;
+        top: 5em;
+        left: 3em;
+        h4 {
+            --font: 'Holtwood One SC', serif;
+            font-weight: light;
+        }
+        h3 {
+            font-weight: bolder;
+        }
     }
 }
+/* custom devise styling*/
+@import 'sessions';
+@import 'registrations';
+@import 'passwords';
+
 
 .banner-text {
     position: relative;
@@ -52,8 +86,3 @@ body {
         font-weight: bolder;
     }
 }
-
-/* custom devise styling*/
-@import 'sessions';
-@import 'registrations';
-@import 'passwords';

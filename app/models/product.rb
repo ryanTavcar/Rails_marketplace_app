@@ -21,6 +21,7 @@ class Product < ApplicationRecord
   has_many :categories, through: :products_categories
   has_many :likes, dependent: :destroy
   accepts_nested_attributes_for :products_categories
+  has_one :order
 
   has_one_attached :picture
 

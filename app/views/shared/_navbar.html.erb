@@ -1,10 +1,13 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
     <div class="container-fluid">
-        <%= link_to('PRINT IT!', root_path, class: 'navbar-brand')%>
+        <div class="logo-container"> 
+            <%= image_tag('3Dprinter.png', class: 'logo')%> 
+            <%= link_to('PRINT IT!', root_path, class: 'navbar-brand')%>
+        </div>
         <ul class="navbar-nav mr-5-lg">
             <% if user_signed_in? %>
-                <li class="nav-item text-warning">
-                    <%= link_to(current_user.username,  profile_path(current_user), class: 'nav-link')%>
+                <li class="nav-item">
+                    <%= link_to(current_user.username,  profile_path(current_user), class: 'nav-link  text-warning')%>
                 </li>
                 <li class="nav-item">
                     <%= link_to('See products', products_path, class: 'nav-link')%>
