@@ -30,6 +30,7 @@ class ProfilesController < ApplicationController
 
     def show
         @profile = Profile.find(params[:id])
+        liked_products
     end
 
     def edit
@@ -48,6 +49,11 @@ class ProfilesController < ApplicationController
     end
 
     def destroy
+    end
+
+    def liked_products
+        @user = User.find(params[:id])
+        @liked_products = @user.likes
     end
 
     def settings

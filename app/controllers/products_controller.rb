@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
 
     # Find all products that have not been bought
     def index
-        @products = Product.find_by(purchased: true)
+      @products = Product.where(purchased: false)
     end
 
     # GET method to get a product by id
