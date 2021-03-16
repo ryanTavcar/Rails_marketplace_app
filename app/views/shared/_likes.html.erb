@@ -1,9 +1,9 @@
 <% if pre_like %>
   <%= link_to product_like_path(@product, pre_like), method: :delete, class: "btn btn-default" do %>
-    <i class="fas fa-heart"></i>
+    <i class="fas fa-heart fa-2x"></i>
   <% end %>
 <% else %>
   <%= link_to product_likes_path(@product), method: :post, class: "btn btn-default" do %>
-    <i class="fas fa-heart"></i>
+    <i class="fas fa-heart fa-2x"></i>
   <% end %>
 <% end %>

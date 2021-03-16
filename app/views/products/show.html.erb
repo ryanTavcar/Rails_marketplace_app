@@ -1,55 +1,50 @@
 <%= render('shared/navbar')%>
 
-<div class="container d-flex flex-column flex-md-row px-2 my-2 my-md-5">
-  <div class="content col-12 col-md-7 col-lg-8 p-0 pr-md-3">
-    <div class="col-12 p-0 main-preview mb-4">
-      <% if @product.picture.attached? %>
-        <%= image_tag(@product.picture, class: 'thumbnail card-img top')%>
-      <% else %>
-        <%= image_tag('skull.jpg', alt: 'skull print', class: 'thumbnail card-img top')%>
-      <% end %>
-    <div>
-  </div>
-</div>
+<main class="main-container">
+  <div class="card border-dark">
+    <% if @product.picture.attached? %>
+      <%= image_tag(@product.picture, class: 'thumbnail card-img top')%>
+    <% else %>
+      <%= image_tag('skull.jpg', alt: 'skull print', class: 'thumbnail card-img top')%>
+    <% end %>
+  <div>
+</main>
 
 <%# Display user identification and product name. %>
-<div class="col-md-4 blog-sidebar col-lg-4 p-0 mx-2 d-md-block">
-  <h6 class="mb-sm-2 mb-md-5"> 
-    <%= link_to(@product.user.email, profile_path(@product.user.profile.id)) %>
-  </h6>
-  <h3> <%= @product.name %> </h3>
-
+<section class="profile-info">
+  <h1> <%= @product.name %> </h1>
+  <div class="sidebar col-lg-4 p-0 mx-2 d-md-block"> 
+    <h6 class="card-subtitle my-2 text-muted">Added <%= time_ago_in_words(@product.created_at)%> ago </h6>
+    <p> <%= link_to(@product.user.username, profile_path(@product.user.profile.id)) %> </p>
+    <%# Display product bulk information. %>
+    <p class="blockquote mt-2"> <%= @product.description %> </p>
   <%# Render like button if user is sign in, if user is not sign in, display likes count. %>
-  <% if user_signed_in?%>
-    <%= render('shared/likes')%>
-    <p> <%= @product.likes.count %> <%= format_likes(@product)%> </p>
-  <% else %>
-    <p> <%= @product.likes.count %> <%= format_likes(@product)%> </p>
-  <% end %>
+    <% if user_signed_in?%>
+      <p> <%= render('shared/likes')%> <%= @product.likes.count %> <%= format_likes(@product)%> </p>
+    <% else %>
+      <p> <%= @product.likes.count %> <%= format_likes(@product)%> </p>
+    <% end %>
 
-  <%# Display product bulk information. %>
-  <p class="blockquote mt-2"> <%= @product.description %> </p>
-  <h6 class="card-subtitle my-2 text-muted">Added <%= time_ago_in_words(@product.created_at)%> ago </h6>
-
+  </div>
   <%# Show buy button if current_user has not purchased this item. %>
   <%# <% if current_user && @product.purchased == false%> 
-  <% if purchased_false(@product)%>
+  <% if user_signed_in?%>
     <button data-stripe='payment' class="btn btn-primary p-3">Buy: $<%= @product.price %> </button>
   <% else %>
     <%=button_to('Login to buy', new_user_session_path, class:"btn btn-danger") %>
   <% end %>
-</div>
 
 
-<div class="container">
-  <div class="d-flex justify-content-envenly">
-  <% if users_own_profile(@product) %>
-      <%= link_to product_settings_path, class: "btn btn-default" do %>
-        <i class="fas fa-cog fa-3x"></i>
-        <% end %>
-    <% end %>
+  <div class="container">
+    <div class="d-flex justify-content-envenly">
+    <% if users_own_profile(@product) %>
+        <%= link_to product_settings_path, class: "btn btn-default" do %>
+          <i class="fas fa-cog fa-3x"></i>
+          <% end %>
+      <% end %>
+    </div>
   </div>
-</div>
+</section>
 
 <script src="https://js.stripe.com/v3/"></script>
 
