@@ -12,7 +12,6 @@
   </div>
 </div>
 
-<%# Fix side bar - not displaying on side of page. %>
 <%# Display user identification and product name. %>
 <div class="col-md-4 blog-sidebar col-lg-4 p-0 mx-2 d-md-block">
   <h6 class="mb-sm-2 mb-md-5"> 
@@ -23,9 +22,9 @@
   <%# Render like button if user is sign in, if user is not sign in, display likes count. %>
   <% if user_signed_in?%>
     <%= render('shared/likes')%>
-    <p><%= @product.likes.count %> <%= (@product.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+    <p> <%= @product.likes.count %> <%= format_likes(@product)%> </p>
   <% else %>
-    <p><%= @product.likes.count %> <%= (@product.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+    <p> <%= @product.likes.count %> <%= format_likes(@product)%> </p>
   <% end %>
 
   <%# Display product bulk information. %>
@@ -33,13 +32,9 @@
   <h6 class="card-subtitle my-2 text-muted">Added <%= time_ago_in_words(@product.created_at)%> ago </h6>
 
   <%# Show buy button if current_user has not purchased this item. %>
-  <% if current_user && @product.purchased == false%>
+  <%# <% if current_user && @product.purchased == false%> 
+  <% if purchased_false(@product)%>
     <button data-stripe='payment' class="btn btn-primary p-3">Buy: $<%= @product.price %> </button>
-
-  <%#>
-  <% elsif @product.purchased == true 
-    <button class="btn btn-secondary" disabled>SOLD</button> %>
-    
   <% else %>
     <%=button_to('Login to buy', new_user_session_path, class:"btn btn-danger") %>
   <% end %>
@@ -48,8 +43,11 @@
 
 <div class="container">
   <div class="d-flex justify-content-envenly">
-    <%= link_to('Edit', edit_product_path(@product.id), class: "btn btn-warning mr-3") if current_user && current_user.id == @product.user_id %>
-    <%= link_to('Delete', @product, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger mr-3") if current_user && current_user.id == @product.user_id %>
+  <% if users_own_profile(@product) %>
+      <%= link_to product_settings_path, class: "btn btn-default" do %>
+        <i class="fas fa-cog fa-3x"></i>
+        <% end %>
+    <% end %>
   </div>
 </div>
 

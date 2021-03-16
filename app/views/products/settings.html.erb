@@ -1,0 +1,8 @@
+<%= render('shared/navbar')%>
+<br>
+<div class="container">
+  <div class="d-flex justify-content-envenly">
+    <%= link_to('Edit', edit_product_path(@product.id), class: "btn btn-warning mr-3") if users_own_profile(@product) %>
+    <%= link_to('Delete', @product, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger mr-3") if users_own_profile(@product) %>
+  </div>
+</div>

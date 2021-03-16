@@ -49,6 +49,7 @@ Print it strives to be a platform that draws consumers due to its middle managem
     - Rubocop
     - Figma
     - Lucidchart
+    - Stripe
 
 
 ### **User stories for your app**
@@ -65,7 +66,9 @@ Print it strives to be a platform that draws consumers due to its middle managem
 
 ### **Detail any third party services that your app will use**
 
-.
+- Stripe
+
+- Amazon S3
 
 ### **Describe your projects models in terms of the relationships (active record associations) they have with each other**
 
@@ -82,5 +85,3 @@ Print it strives to be a platform that draws consumers due to its middle managem
 ### **Describe the way tasks are allocated and tracked in your project**
 
 .
-
-

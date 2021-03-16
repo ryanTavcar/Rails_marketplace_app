@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   post 'payments/webhook', to: 'payments#webhook'
   get 'payments/success', to: 'home#payment_success'
   get '/profiles/settings/:id', to: 'profiles#settings', as: :profile_settings
+  get '/products/settings/:id', to: 'products#settings', as: :product_settings
   get '/profiles/liked_products/:id', to: 'profiles#liked_products', as: :profile_liked_products
   get '/profiles/bought_products/:id', to: 'profiles#bought_products', as: :profile_bought_products
 

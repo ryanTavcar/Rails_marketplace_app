@@ -1,6 +1,9 @@
-<% pre_like = @product.likes.find { |like| like.user_id == current_user.id} %>
-      <% if pre_like %>
-        <%= button_to 'unlike', product_like_path(@product, pre_like), method: :delete %>
-      <% else %>
-        <%= button_to 'like', product_likes_path(@product), method: :post %>
-      <% end %>
+<% if pre_like %>
+  <%= link_to product_like_path(@product, pre_like), method: :delete, class: "btn btn-default" do %>
+    <i class="fas fa-heart"></i>
+  <% end %>
+<% else %>
+  <%= link_to product_likes_path(@product), method: :post, class: "btn btn-default" do %>
+    <i class="fas fa-heart"></i>
+  <% end %>
+<% end %>
