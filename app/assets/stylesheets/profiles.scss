@@ -27,3 +27,83 @@
         height: 6em;
     }
 }
+
+// Generic Laptops
+@media (max-width: 1500px) {
+    body {
+        height: 100vh;
+        width: 100vw;
+        .main-container {
+            position: absolute;
+            top: 20vh;
+            left: 5vw;
+        }
+        .profile-info {
+            position: absolute;
+            top: 20vh;
+            left: 45em;
+            height: 35.75rem;
+            width: 30%;
+        }
+    }
+}
+
+// Ipad
+@media (max-width: 768px) {
+    body {
+        height: 100vh;
+        width: 100vw;
+        .main-container {
+            position: absolute;
+            top: 20vh;
+            left: 5vw;
+        }
+        .profile-info {
+            position: absolute;
+            top: 68vh;
+            left: 5vw;
+            height: auto;
+            width: 79vw;
+        }
+    }
+}
+
+// Surface DUO
+@media (max-width: 540px) {
+    body {
+        height: 100vh;
+        width: 100vw;
+        .main-container {
+            position: absolute;
+            top: 25vh;
+            left: 3vw;
+        }
+        .profile-info {
+            position: absolute;
+            top: 92vh;
+            left: 5vw;
+            height: auto;
+            width: 79vw;
+        }
+    }
+}
+
+// Pixel 2
+@media (max-width: 412px) {
+    body {
+        height: 100vh;
+        width: 100vw;
+        .main-container {
+            position: absolute;
+            top: 25vh;
+            left: 0vw;
+        }
+        .profile-info {
+            position: absolute;
+            top: 82vh;
+            left: 5vw;
+            height: auto;
+            width: 79vw;
+        }
+    }
+}

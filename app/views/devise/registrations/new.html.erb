@@ -5,30 +5,30 @@
   </div>
 </section>
 
-<main class=" main d-flex flex-coloumn justify-content-center">
-  <div class="auth-content d-flex flex-column justify-content-center align-items-center">
+<main class=" main2 d-flex flex-coloumn justify-content-center">
+  <div class="auth-content2 d-flex flex-column justify-content-center align-items-center">
 
     <h2>Sign up with Print it</h2>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
 
-      <div class="field">
+      <div class="field2">
         <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-group" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-group2" %>
       </div>
 
-      <div class="field">
+      <div class="field2">
         <%= f.label :password %>
         <% if @minimum_password_length %>
         <em>(<%= @minimum_password_length %> characters minimum)</em>
         <% end %><br />
-        <%= f.password_field :password, autocomplete: "new-password", class: "form-group" %>
+        <%= f.password_field :password, autocomplete: "new-password", class: "form-group2" %>
       </div>
 
-      <div class="field">
+      <div class="field2">
         <%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-group" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-group2" %>
       </div>
 
       <div class="actions">

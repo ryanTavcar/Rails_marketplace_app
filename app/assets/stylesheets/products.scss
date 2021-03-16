@@ -15,7 +15,7 @@
     }
 }
 
-.profile-info {
+.product-info {
     position: absolute;
     top: 20vh;
     left: 60em;
@@ -24,5 +24,96 @@
     .fa-heart {
         color: #FD7E14;
     }
-    
+}
+
+// Generic Laptops
+@media (max-width: 1500px) {
+    body {
+        height: 100vh;
+        width: 100vw;
+        .main-container {
+            position: absolute;
+            top: 20vh;
+            left: 5vw;
+        }
+        .product-info {
+            position: absolute;
+            top: 20vh;
+            left: 45em;
+            height: 35.75rem;
+            width: 30%;
+            .fa-heart {
+                color: #FD7E14;
+            }
+        }
+    }
+}
+
+// Ipad
+@media (max-width: 768px) {
+    body {
+        height: 100vh;
+        width: 100vw;
+        .main-container {
+            position: absolute;
+            top: 20vh;
+            left: 5vw;
+        }
+        .product-info {
+            position: absolute;
+            top: 55vh;
+            left: 5vw;
+            height: auto;
+            width: 79vw;
+            .fa-heart {
+                color: #FD7E14;
+            }
+        }
+    }
+}
+
+// Surface DUO
+@media (max-width: 540px) {
+    body {
+        height: 100vh;
+        width: 100vw;
+        .main-container {
+            position: absolute;
+            top: 20vh;
+            left: 3vw;
+        }
+        .product-info {
+            position: absolute;
+            top: 68vh;
+            left: 5vw;
+            height: auto;
+            width: 79vw;
+            .fa-heart {
+                color: #FD7E14;
+            }
+        }
+    }
+}
+
+// Pixel 2
+@media (max-width: 412px) {
+    body {
+        height: 100vh;
+        width: 100vw;
+        .main-container {
+            position: absolute;
+            top: 20vh;
+            left: 0vw;
+        }
+        .product-info {
+            position: absolute;
+            top: 60vh;
+            left: 5vw;
+            height: auto;
+            width: 79vw;
+            .fa-heart {
+                color: #FD7E14;
+            }
+        }
+    }
 }
