@@ -17,13 +17,14 @@ class Product < ApplicationRecord
   # ASSOCIATIONS
   belongs_to :material
   belongs_to :user
-  has_many :products_categories
+  has_many :products_categories, dependent: :destroy
   has_many :categories, through: :products_categories
   has_many :likes, dependent: :destroy
   accepts_nested_attributes_for :products_categories
   has_one :order
 
   has_one_attached :picture
+  has_one_attached :file
 
   # VALIDATIONS
   validates :name, presence: true

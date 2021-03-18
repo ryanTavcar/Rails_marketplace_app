@@ -64,7 +64,7 @@ class ProductsController < ApplicationController
   def update
       @product = Product.find(params[:id])
       respond_to do |format|
-          if @product.save
+          if @product.update(product_params)
             format.html { redirect_to @product, notice: 'Product updated!'}
             format.json { render :show, status: :created, location: @product }
           else
@@ -92,7 +92,7 @@ class ProductsController < ApplicationController
 
   # we used strong parameters for the validation of params
   def product_params
-      params.require(:product).permit(:name, :like, :description, :price, :material_id, :user_id)
+      params.require(:product).permit(:name, :like, :description, :price, :material_id, :user_id, :picture, category_ids: [])
   end
 
   def set_user_product
