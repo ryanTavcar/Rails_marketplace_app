@@ -17,7 +17,13 @@
     <h6 class="card-subtitle my-2 text-muted">Added <%= time_ago_in_words(@product.created_at)%> ago </h6>
     <p> <%= link_to(@product.user.username, profile_path(@product.user.profile.id)) %> </p>
     <%# Display product bulk information. %>
+    <p> <%= @product.material.name%> </p>
+
+    <%@product.categories.each do |cat| %>
+        <span class="badge badge-pill badge-info"> <%= cat.name %> </span>
+      <% end %>
     <p class="blockquote mt-2"> <%= @product.description %> </p>
+    
   <%# Render like button if user is sign in, if user is not sign in, display likes count. %>
     <% if user_signed_in?%>
       <p> <%= render('shared/likes')%> <%= @product.likes.count %> <%= format_likes(@product)%> </p>

@@ -16,7 +16,7 @@ class ProfilesController < ApplicationController
     end
     
     def create
-        @profile = current_user.create_profile(first_name: profile_params["first_name"], last_name: profile_params["last_name"])
+        @profile = current_user.create_profile(first_name: profile_params["first_name"], last_name: profile_params["last_name"], picture: profile_params[:picture])
         current_user.username = profile_params["user_attributes"]["username"]
         if @profile.save && current_user.save
           flash[:success] = "Profile saved"
@@ -39,7 +39,7 @@ class ProfilesController < ApplicationController
 
     def update
        @profile = current_user.profile #.find(params[:id])
-       if @profile.update(first_name: profile_params["first_name"], last_name: profile_params["last_name"]) && current_user.update(username: profile_params["user_attributes"]["username"])
+       if @profile.update(picture: profile_params[:picture], first_name: profile_params["first_name"], last_name: profile_params["last_name"]) && current_user.update(username: profile_params["user_attributes"]["username"])
             flash[:success] = "Successfully updated"    # Optional
             redirect_to @profile
         else
@@ -67,7 +67,7 @@ class ProfilesController < ApplicationController
     private
 
     def profile_params
-        params.require(:profile).permit(:first_name, :last_name, user_attributes: [:id, :username])
+        params.require(:profile).permit(:first_name, :last_name, :picture, user_attributes: [:id, :username])
     end
 
 
