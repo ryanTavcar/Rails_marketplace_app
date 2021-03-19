@@ -9,7 +9,8 @@ class HomeController < ApplicationController
         pp params
         product_id = params[:productId]
         @product = Product.find(product_id)
-        @purchase = Order.find_by_product_id(product_id)
+        #@purchase = Order.find_by_product_id(product_id)
+        @purchase = Order.find_by_product_id(@product)
     end
     
 end

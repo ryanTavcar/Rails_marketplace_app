@@ -8,13 +8,15 @@
     top: 20vh;
     left: 20em;
     max-width: 30rem;
+    max-height: 60rem;
     margin: 0;
-    .thumbnail {
-        height: 30%;
-        height: 30%;
-    }
+    // .card-show {
+    //     .thumbnail-show {
+    //         //height: 60%;
+    //         //width: 60%;
+    //     }    
+    // }
 }
-
 .product-info {
     position: absolute;
     top: 20vh;
@@ -23,6 +25,13 @@
     width: 30%;
     .fa-heart {
         color: #FD7E14;
+    }
+}
+
+.card-index {
+    .thumbnail-index {
+        height: 228px;
+        width: 341px;
     }
 }
 

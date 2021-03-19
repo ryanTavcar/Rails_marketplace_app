@@ -28,7 +28,22 @@ gem 'rubocop', require: false
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
-
+# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+# Add Devise gem
+gem 'devise'
+# Add Bootstrap gem
+gem "bootstrap", ">= 4.3.1"
+# Jquery gem for bootstrap
+gem 'jquery-rails'
+# Add stripe gem
+gem 'stripe'
+# Compile images to heroku
+gem 'rails_12factor', group: :production
+# Add font awesome
+gem 'font_awesome5_rails'
+# Aws S3
+gem "aws-sdk-s3", "~> 1.91"
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
@@ -54,19 +69,4 @@ group :test do
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
 end
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-# Add Devise gem
-gem 'devise'
-# Add Bootstrap gem
-gem "bootstrap", ">= 4.3.1"
-# Jquery gem for bootstrap
-gem 'jquery-rails'
-# Add stripe gem
-gem 'stripe'
-# Compile images to heroku
-gem 'rails_12factor', group: :production
-# Add font awesome
-gem 'font_awesome5_rails'
 

@@ -1,9 +1,9 @@
 <%= render('shared/navbar')%>
 
 <main class="main-container">
-  <div class="card border-dark">
+  <div class="card card-show border-dark">
     <% if @product.picture.attached? %>
-      <%= image_tag(@product.picture, class: 'thumbnail card-img top')%>
+    <%= image_tag(@product.picture, class: ' thumbnail-show ') %>
     <% else %>
       <%= image_tag('skull.jpg', alt: 'skull print', class: 'thumbnail card-img top')%>
     <% end %>
@@ -20,7 +20,7 @@
     <p> <%= @product.material.name%> </p>
 
     <%@product.categories.each do |cat| %>
-        <span class="badge badge-pill badge-info"> <%= cat.name %> </span>
+        <span class="badge badge-pill badge-primary"> <%= cat.name %> </span>
       <% end %>
     <p class="blockquote mt-2"> <%= @product.description %> </p>
     

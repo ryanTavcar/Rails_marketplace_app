@@ -15,9 +15,9 @@
       <div class="col mb-3">
         <div class="card border-light">
         <% if product.picture.attached? %>
-            <%= image_tag(product.picture, class: 'thumbnail card-img top')%>
+            <%= link_to image_tag(product.picture, class: 'thumbnail-home card-img top'), product_path(product.id) %>
           <% else %>
-            <%= image_tag('skull.jpg', alt: 'skull print', class: 'thumbnail card-img top h-100')%>
+            <%= link_to image_tag('skull.jpg', alt: 'skull print', class: 'thumbnail-home card-img top'), product_path(product.id) %>
           <% end %>
           
           <div class="card-body">
@@ -26,7 +26,7 @@
             <h6 class="card-subtitle my-2 text-muted">Added <%= time_ago_in_words(product.created_at)%> ago </h6>
             <p class="card-text text-secondary text-truncate"><%= product.description%></p>
             <div class="d-flex justify-content-between">
-              <%= link_to('See More', product_path(product.id), class: "btn btn-outline-dark")%>
+              <%= link_to('See More', product_path(product.id), class: "btn btn-outline-primary")%>
               <h5>$<%=product.price%></h5>
             </div>
           </div>

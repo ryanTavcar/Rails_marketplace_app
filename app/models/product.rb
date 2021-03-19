@@ -13,7 +13,6 @@
 #  updated_at  :datetime         not null
 #
 class Product < ApplicationRecord
-  
   # ASSOCIATIONS
   belongs_to :material
   belongs_to :user
@@ -30,5 +29,6 @@ class Product < ApplicationRecord
   validates :name, presence: true
   validates :description, presence: true
   validates :price, presence: true, numericality: {:greater_than => 0}
+
 
 end
