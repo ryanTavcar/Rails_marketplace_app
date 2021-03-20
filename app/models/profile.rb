@@ -14,8 +14,8 @@ class Profile < ApplicationRecord
   private
 
   def remove_whitespace
-    self.name = self.name.strip
+    self.first_name = self.first_name.strip
+    self.last_name = self.last_name.strip
     self.description = self.description.strip
-    self.price = self.price.strip
   end
 end
