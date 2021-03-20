@@ -65,29 +65,29 @@ Description of your marketplace app (website), including:
 
 - **Sitemap**
 
-![My Site Map](app\assets\markdown_img\gloomap_2b0d2522.png)
+![My Site Map](docs\markdown_img\gloomap_2b0d2522.png)
 
 - **Screenshots**
 
 **Home Page**
 
-<img src="app\assets\markdown_img\app_1.jpg" width="600">
+<img src="docs\markdown_img\app_1.jpg" width="600">
 
 **Profile Page**
 
-<img src="app\assets\markdown_img\app_2.jpg" width="600">
+<img src="docs\markdown_img\app_2.jpg" width="600">
 
 **Sign in Desktop**
 
-<img src="app\assets\markdown_img\app_3.jpg" width="600">
+<img src="docs\markdown_img\app_3.jpg" width="600">
 
 **Sign in Tablet**
 
-<img src="app\assets\markdown_img\app_4.jpg" height="400">
+<img src="docs\markdown_img\app_4.jpg" height="400">
 
 **Product Page Not Signed In**
 
-<img src="app\assets\markdown_img\app_5.jpg" width="600">
+<img src="docs\markdown_img\app_5.jpg" width="600">
 
 
 - **Target audience**
@@ -128,44 +128,44 @@ Description of your marketplace app (website), including:
 
 User stories for your app
 ==============================
-<img src="app/assets/markdown_img/user_story_1.png" height="600" width="400">
-<img src="app/assets/markdown_img/user_story_2.png" height="600" width="400">
-<img src="app/assets/markdown_img/user_story_3.png" height="600" width="400">
-<img src="app/assets/markdown_img/user_story_4.png" height="600" width="400">
-<img src="app/assets/markdown_img/user_story_5.png" height="600" width="400">
-<img src="app/assets/markdown_img/user_story_6.png" height="600" width="400">
+<img src="docs/markdown_img/user_story_1.png" height="600" width="400">
+<img src="docs/markdown_img/user_story_2.png" height="600" width="400">
+<img src="docs/markdown_img/user_story_3.png" height="600" width="400">
+<img src="docs/markdown_img/user_story_4.png" height="600" width="400">
+<img src="docs/markdown_img/user_story_5.png" height="600" width="400">
+<img src="docs/markdown_img/user_story_6.png" height="600" width="400">
 
 Wireframes for your app
 ==============================
 
 **Wireframes for desktop**
 
-<img src="app\assets\markdown_img\homeindex-Desktop.png" width="600">
-<img src="app\assets\markdown_img\productshow-Desktop.png" width="600">
-<img src="app\assets\markdown_img\profileshow-Desktop.png" width="600">
-<img src="app\assets\markdown_img\Login-Desktop.png" width="600">
-<img src="app\assets\markdown_img\Signup-Desktop.png" width="600">
+<img src="docs\markdown_img\homeindex-Desktop.png" width="600">
+<img src="docs\markdown_img\productshow-Desktop.png" width="600">
+<img src="docs\markdown_img\profileshow-Desktop.png" width="600">
+<img src="docs\markdown_img\Login-Desktop.png" width="600">
+<img src="docs\markdown_img\Signup-Desktop.png" width="600">
 
 **Wireframes for tablet**
 
-<img src="app\assets\markdown_img\homeindex-Tablet.png" width="400">
-<img src="app\assets\markdown_img\productshow-Tablet.png" width="400">
-<img src="app\assets\markdown_img\profileshow-Tablet.png" width="400">
-<img src="app\assets\markdown_img\Login-Tablet.png" width="400">
-<img src="app\assets\markdown_img\Signup-Tablet.png" width="400">
+<img src="docs\markdown_img\homeindex-Tablet.png" width="400">
+<img src="docs\markdown_img\productshow-Tablet.png" width="400">
+<img src="docs\markdown_img\profileshow-Tablet.png" width="400">
+<img src="docs\markdown_img\Login-Tablet.png" width="400">
+<img src="docs\markdown_img\Signup-Tablet.png" width="400">
 
 **Wireframes for mobile**
 
-<img src="app\assets\markdown_img\homeindex-Mobile.png" width="200">
-<img src="app\assets\markdown_img\productshow-Mobile.png" width="200">
-<img src="app\assets\markdown_img\profileshow-Mobile.png" width="200">
-<img src="app\assets\markdown_img\Login-Mobile.png" width="200">
-<img src="app\assets\markdown_img\Signup-Mobile.png" width="200">
+<img src="docs\markdown_img\homeindex-Mobile.png" width="200">
+<img src="docs\markdown_img\productshow-Mobile.png" width="200">
+<img src="docs\markdown_img\profileshow-Mobile.png" width="200">
+<img src="docs\markdown_img\Login-Mobile.png" width="200">
+<img src="docs\markdown_img\Signup-Mobile.png" width="200">
 
 An ERD for your app
 ===================
 
-![ERD](app/assets/markdown_img/marketplace_erd.jpeg)
+![ERD](docs/markdown_img/marketplace_erd.jpeg)
 
 Explain the different high-level components (abstractions) in your app
 =======================================================================
@@ -199,15 +199,15 @@ The models used associate with eachother in perhaps a standard way. The assocati
 - many-to-many relationship:
     I'm fine with wrapping my head around the kind of thinking belonging to one to one relationships, and even one to many. What took be a while to wrap my head around were many to many relationships which demand a join table. Presenting many to many relationship by abstracting tables into this format (see figure below) helps to visualize what a join tables purpose really is. In this example, product 1 is referenced in Product_catergory table, listed under ProductCategory_id 1. Product Category_id 1 also references 3 ids from the Category table, 1,2 and 4. Stationary, Utility and Mechanical. Many to many relationships allow each product to have many categories associated with it.
 
-<img src="app\assets\markdown_img\erd_3.jpg" width="1000">
+<img src="docs\markdown_img\erd_3.jpg" width="1000">
 
 Discuss the database relations to be implemented in your application
 ====================================================================
 
 Creating a database and how they all relate to one another was something that took me awhile to 'configure' my head around. After watching my rails conferences about models and database deign and also reading alot of ruby guides and blog posts, I found it very helpful to create and entity relationship diagram that was an abstraction of my erd (veiwed above). This abstractged erd dhowcases 'real data' and how their foreign keys actually relate to each table (view this erd below). 
 
-<img src="app\assets\markdown_img\erd_1.jpg" width="1000">
-<img src="app\assets\markdown_img\erd_2.jpg" width="1000">
+<img src="docs\markdown_img\erd_1.jpg" width="1000">
+<img src="docs\markdown_img\erd_2.jpg" width="1000">
 
 Provide your database schema design
 ===================================
@@ -237,10 +237,10 @@ Tasks prioritised last were allocated a blue label. Some of these tasks were:
 
 First half of the video.
 
-![Trello Board 1](app\assets\markdown_img\trello_board_1.gif)
+![Trello Board 1](docs\markdown_img\trello_board_1.gif)
 
 Second half of the video.
 
-![Trello Board 2](app\assets\markdown_img\trello_board_2.gif)
+![Trello Board 2](docs\markdown_img\trello_board_2.gif)
 
 
