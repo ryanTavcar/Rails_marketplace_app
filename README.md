@@ -142,7 +142,7 @@ Wireframes for your app
 
 <img src="docs\markdown_img\homeindex-Desktop.png" width="600">
 <img src="docs\markdown_img\productshow-Desktop.png" width="600">
-<img src="docs\markdown_img\profileshow-Desktop.png" width="600">
+<img src="docs\markdown_img\Profileshow-Desktop.png" width="600">
 <img src="docs\markdown_img\Login-Desktop.png" width="600">
 <img src="docs\markdown_img\Signup-Desktop.png" width="600">
 
