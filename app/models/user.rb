@@ -1,19 +1,5 @@
-# == Schema Information
-#
-# Table name: users
-#
-#  id                     :bigint           not null, primary key
-#  email                  :string           default(""), not null
-#  encrypted_password     :string           default(""), not null
-#  reset_password_token   :string
-#  reset_password_sent_at :datetime
-#  remember_created_at    :datetime
-#  created_at             :datetime         not null
-#  updated_at             :datetime         not null
-#  username               :string
-#
 class User < ApplicationRecord
-
+  # ASSOCIATIONS
   has_one :profile, dependent: :destroy
   has_many :products, dependent: :destroy
   has_many :likes, dependent: :destroy
@@ -23,10 +9,13 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
 
+  before_save :remove_whitespace
 
+  private
 
-  def completed_profile?
-    self.first_name.present? && self.last_name.present?
+  def remove_whitespace
+    self.first_name = self.first_name.strip
+    self.last_name = self.last_name.strip
   end
          
 end

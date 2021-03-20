@@ -8,7 +8,6 @@ class ProfilesController < ApplicationController
     # redirected to profile form.
 
     def index
-        @profiles = Profile.all
     end
 
     def new
@@ -53,11 +52,7 @@ class ProfilesController < ApplicationController
 
     def liked_products
         @user = User.find(params[:id])
-        @liked_products = @user.likes
-    end
-
-    def bought_products
-        @bought_product = Product.where(purchased: true)
+        @liked_products = @user.likes.eager_load(:product)
     end
 
     def settings

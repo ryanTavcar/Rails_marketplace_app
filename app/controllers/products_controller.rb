@@ -4,14 +4,13 @@ class ProductsController < ApplicationController
   before_action :set_user_product, only: [ :update, :edit, :destroy]
   before_action :set_form_vars, only: [:new, :edit]
 
-  # Find all products that have not been bought
+  # Find random records in Product table for explore page.
   def index
-    @products = Product.all
+    @products = Product.order("RANDOM()").eager_load(:user, :likes, :material, :categories).with_attached_picture
   end
 
-  # GET method to get a product by id
+  # GET method to get a product by id from set_product and Stripe
   def show
-      @product = Product.find(params[:id])
       stripe_session = Stripe::Checkout::Session.create(
           payment_method_types: ['card'],
           client_reference_id: current_user ? current_user.id : nil, 
@@ -33,7 +32,6 @@ class ProductsController < ApplicationController
           cancel_url: "#{root_url}products"
         )
         @session_id = stripe_session.id
-        pp stripe_session
   end
 
   # GET method for the new product form
@@ -45,7 +43,7 @@ class ProductsController < ApplicationController
   def create
       @product = current_user.products.build(product_params)
       respond_to do |format|
-          if @product.save
+        if @product.save
             format.html { redirect_to @product, notice: 'Product added!'}
             format.json { render :show, status: :created, location: @product }
           else
@@ -57,12 +55,10 @@ class ProductsController < ApplicationController
 
   # GET method for editing a product based on id
   def edit
-      @product = Product.find(params[:id])
   end
 
   # PUT/PATCH method for updating in database a pruduct based on id
   def update
-      @product = Product.find(params[:id])
       respond_to do |format|
           if @product.update(product_params)
             format.html { redirect_to @product, notice: 'Product updated!'}
@@ -76,8 +72,7 @@ class ProductsController < ApplicationController
 
   # DELETE method for deleting a product from the database
   def destroy
-      @product = Product.find(params[:id])
-
+      @product.destroy
       respond_to do |format|
           format.html { redirect_to products_url, notice: 'Product deleted!'}
           format.json { head :no_content }
@@ -107,6 +102,7 @@ class ProductsController < ApplicationController
       @product = Product.find(params[:id])
   end
 
+  # Set form variables
   def set_form_vars
       @categories = Category.all
       @materials = Material.all

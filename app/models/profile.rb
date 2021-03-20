@@ -1,19 +1,21 @@
-# == Schema Information
-#
-# Table name: profiles
-#
-#  id         :bigint           not null, primary key
-#  user_id    :bigint           not null
-#  biography  :text
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  first_name :string
-#  last_name  :string
-#
 class Profile < ApplicationRecord
-
+  # ASSOCIATIONS
   belongs_to :user
   accepts_nested_attributes_for :user
-
+  
   has_one_attached :picture
+  
+  # VALIDATIONS
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  
+  before_save :remove_whitespace
+
+  private
+
+  def remove_whitespace
+    self.name = self.name.strip
+    self.description = self.description.strip
+    self.price = self.price.strip
+  end
 end
