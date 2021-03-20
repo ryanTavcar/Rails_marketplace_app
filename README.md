@@ -65,7 +65,7 @@ Description of your marketplace app (website), including:
 
 - **Sitemap**
 
-![My Site Map](docs\markdown_img\gloomap_2b0d2522.png)
+![My Site Map](docs\markdown_img\sitemap.png)
 
 - **Screenshots**
 
