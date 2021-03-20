@@ -15,7 +15,7 @@ class ProfilesController < ApplicationController
     end
     
     def create
-        @profile = current_user.create_profile(first_name: profile_params["first_name"], last_name: profile_params["last_name"], picture: profile_params[:picture])
+        @profile = current_user.create_profile(first_name: profile_params["first_name"], last_name: profile_params["last_name"], biography: profile_params["biography"], picture: profile_params[:picture])
         current_user.username = profile_params["user_attributes"]["username"]
         if @profile.save && current_user.save
           flash[:success] = "Profile saved"
@@ -62,7 +62,7 @@ class ProfilesController < ApplicationController
     private
 
     def profile_params
-        params.require(:profile).permit(:first_name, :last_name, :picture, user_attributes: [:id, :username])
+        params.require(:profile).permit(:first_name, :last_name, :biography, :picture, user_attributes: [:id, :username])
     end
 
 
