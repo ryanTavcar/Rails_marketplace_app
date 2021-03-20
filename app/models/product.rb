@@ -24,7 +24,7 @@ class Product < ApplicationRecord
 
   def remove_whitespace
     self.name = self.name.strip
-    self.description = self.biography.strip
+    self.description = self.description.strip
   end
 
 end
