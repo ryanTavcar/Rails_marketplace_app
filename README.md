@@ -9,6 +9,16 @@ Rails version
 ==============
 6.1.3
 
+Setup
+=====
+1. Make a fork of this repository.
+2. Clone your fork to your local development environment.
+3. Navigate into this directory via your terminal.
+4. Install dependencies 'bundle install'.
+5. Check node dependencies 'yarn install --check-files'
+6. run 'rails db:create' to create the database.
+7. run 'rails s' and check that everything is working (you should see welcome to rails!)
+
 Identification of the problem you are trying to solve by building this particular marketplace app.
 ===================================================================================================
 
@@ -59,6 +69,25 @@ Description of your marketplace app (website), including:
 
 - **Screenshots**
 
+**Home Page**
+
+<img src="app\assets\markdown_img\app_1.jpg" width="600">
+
+**Profile Page**
+
+<img src="app\assets\markdown_img\app_2.jpg" width="600">
+
+**Sign in Desktop**
+
+<img src="app\assets\markdown_img\app_3.jpg" width="600">
+
+**Sign in Tablet**
+
+<img src="app\assets\markdown_img\app_4.jpg" height="400">
+
+**Product Page Not Signed In**
+
+<img src="app\assets\markdown_img\app_5.jpg" width="600">
 
 
 - **Target audience**
@@ -184,14 +213,27 @@ Provide your database schema design
 ===================================
 
 Please view my database schema, you can find it here: db\schema.rb. 
-I created 18 migration during the time of the assignment. Soime of these migrations are related to tables that requrie a foreign key, such as my material table and profile table. In fact, between the lines 124 and 134 of my schema.rb file, you can see with tables are referneced in other table with the add_foreign_key contraint. My schema.rb rile has been mostly generated due to the migrations i imposed.
+I created 18 migration during the time of the assignment. Some of these migrations are related to tables that requrie a foreign key, such as my material table and profile table. In fact, between the lines 124 and 134 of my schema.rb file, you can see with tables are referneced in other table with the add_foreign_key contraint. There are 11 foreign key constraits. My schema.rb rile has been mostly generated due to the migrations i imposed. Early on in the createion of my database, i originally had the Profile column 'first_name' and 'last_name' under the User table, However half way through the assignment, i felt that perhaps these two columns would best be in the Profile table, which you can see from my migration 'db\migrate\20210310002506_remove_first_name_from_profile_table.rb'. No changes were ever made directly to the schema.rb file.
 
 Describe the way tasks are allocated and tracked in your project
 ================================================================
 
 Project management is an aspect i was all over during this assignment. I utilised my trello board to the best of my capabilities, but i also hand wrote small tasks that i would think of late at night, after i have saved my work and turned my computer off. See below for a video i put together of recordings i took that showcase how my trello board was utilised of the course of the assignment. I like to use labels to prioritise with tasks need to be completed first and which tasks i can take my time with.
 
-**Gifs showcase use of my trello board**
+Those prioritised first were allocated a red label. Some of these tasks were:
+1. Create erd
+2. Create wireframes
+3. Set up database
+4. Create models
+5. Make sure the server runs.
+
+Tasks prioritised last were allocated a blue label. Some of these tasks were:
+1. Documentation
+2. Presentation
+3. Sanitise Models
+4. Minimise database calls
+
+**Gifs showcasing the use of my trello board**
 
 First half of the video.
 
