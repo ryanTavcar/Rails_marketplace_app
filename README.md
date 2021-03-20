@@ -158,9 +158,9 @@ Wireframes for your app
 
 <img src="docs\markdown_img\homeindex-Mobile.png" width="200">
 <img src="docs\markdown_img\productshow-Mobile.png" width="200">
-<img src="docs\markdown_img\profileshow-Mobile.png" width="200">
-<img src="docs\markdown_img\Login-Mobile.png" width="200">
-<img src="docs\markdown_img\Signup-Mobile.png" width="200">
+<img src="docs\markdown_img\Profileshow-Mobile.png" width="200">
+<img src="docs\markdown_img\login-Mobile.png" width="200">
+<img src="docs\markdown_img\signup-Mobile.png" width="200">
 
 An ERD for your app
 ===================
